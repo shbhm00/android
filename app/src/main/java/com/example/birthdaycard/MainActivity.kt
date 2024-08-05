@@ -36,9 +36,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background,
 
                     ) {
-                    GreetingImage(
-                        message = stringResource(R.string.happy_birthday_sam),
-                        from = stringResource(R.string.from_emma)
+                    ComposeArticle(
+                        title = stringResource(R.string.jetpack_compose_tutorial),
+                        para1 = stringResource(R.string.compose_para_one),
+                        para2 = stringResource(R.string.compose_para_two)
                     )
                 }
             }
@@ -47,55 +48,99 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-    ) {
-        Text(
-            text = message,
-            fontSize = 100.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center
+fun ComposeArticle(title: String, para1: String, para2: String,modifier: Modifier=Modifier) {
+    val image = painterResource(id = R.drawable.bg_compose_background)
+    Column {
+        Image(
+            painter = image,
+            contentDescription = null
         )
         Text(
-            text = from,
-            fontSize = 36.sp,
+            text = title,
+            fontSize = 24.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.CenterHorizontally)
         )
+
+        Text(
+            text = para1,
+            modifier=Modifier
+                .padding(horizontal = 16.dp),
+            textAlign = TextAlign.Justify
+
+
+        )
+        Text(text = para2,
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(20.dp))
     }
+
 }
 
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.androidparty)
-    Box(modifier) {
-        Image(
-            painter = image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            alpha = 0.5F
-        )
-        GreetingText(
-            message = message,
-            from = from,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
-        )
-    }
+fun ComposeQuadrant()
+{
 
 }
+
+@Composable
+fun Box(color:String,title: String,)
+{
+
+}
+//@Composable
+//fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+//    Column(
+//        verticalArrangement = Arrangement.Center,
+//        modifier = modifier
+//    ) {
+//        Text(
+//            text = message,
+//            fontSize = 100.sp,
+//            lineHeight = 116.sp,
+//            textAlign = TextAlign.Center
+//        )
+//        Text(
+//            text = from,
+//            fontSize = 36.sp,
+//            modifier = Modifier
+//                .padding(16.dp)
+//                .align(alignment = Alignment.CenterHorizontally)
+//        )
+//    }
+//}
+
+//@Composable
+//fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
+//    val image = painterResource(R.drawable.androidparty)
+//    Box(modifier) {
+//        Image(
+//            painter = image,
+//            contentDescription = null,
+//            contentScale = ContentScale.Crop,
+//            alpha = 0.5F
+//        )
+//        GreetingText(
+//            message = message,
+//            from = from,
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .padding(8.dp)
+//        )
+//    }
+//
+//}
 
 @Preview(showBackground = true)
 @Composable
 fun BirthDayPreview() {
     BirthdayCardTheme {
-        GreetingImage(
-            message = stringResource(R.string.happy_birthday_sam),
-            from = stringResource(R.string.from_emma)
+        ComposeArticle(
+            title = stringResource(R.string.jetpack_compose_tutorial),
+            para1 = stringResource(R.string.compose_para_one),
+            para2 = stringResource(R.string.compose_para_two)
         )
     }
 }
